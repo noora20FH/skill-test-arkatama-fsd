@@ -1,34 +1,34 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OwnerController; // Perlu buat controller ini
 use Illuminate\Support\Facades\Auth;
 
-// Halaman Depan (Login)
 Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route untuk USER BIASA
+// Route User Biasa
 Route::get('/dashboard', function () {
-    // Jika admin login, redirect ke admin dashboard
     if (Auth::user()->role === 'admin') {
         return redirect()->route('admin.dashboard');
     }
-    return view('dashboard'); // Tampilan User
+    return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route untuk ADMIN (Dilindungi Middleware 'admin')
+// Route ADMIN
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     
-    // Route Simpan Hewan
-    Route::post('/admin/pet', [AdminController::class, 'storePet'])->name('admin.pet.store');
+    // Halaman Khusus Data Hewan
+    Route::get('/admin/pets', [AdminController::class, 'petIndex'])->name('admin.pets.index');
     
-    // Route Hapus Hewan
+    // CRUD Hewan
+    Route::post('/admin/pet', [AdminController::class, 'storePet'])->name('admin.pet.store');
     Route::delete('/admin/pet/{id}', [AdminController::class, 'destroyPet'])->name('admin.pet.destroy');
 
-    // Route Simpan Pemeriksaan (BARU)
-    Route::post('/admin/checkup', [AdminController::class, 'storeCheckup'])->name('admin.checkup.store');
+    // CRUD Pemilik (Resource otomatis membuat index, store, destroy, dll)
+    Route::resource('/admin/owners', OwnerController::class);
 });
 
 require __DIR__.'/auth.php';

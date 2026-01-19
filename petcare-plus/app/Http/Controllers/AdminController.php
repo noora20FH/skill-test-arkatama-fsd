@@ -92,4 +92,9 @@ class AdminController extends Controller
         Pet::findOrFail($id)->delete();
         return back()->with('success', 'Data dihapus.');
     }
+    public function petIndex()
+{
+    $pets = Pet::with('owner')->latest()->get();
+    return view('admin.pets.index', compact('pets'));
+}
 }
