@@ -29,6 +29,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // CRUD Pemilik (Resource otomatis membuat index, store, destroy, dll)
     Route::resource('/admin/owners', OwnerController::class);
+    Route::post('/admin/checkup', [AdminController::class, 'storeCheckup'])->name('admin.checkup.store');
 });
 
 require __DIR__.'/auth.php';

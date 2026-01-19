@@ -86,15 +86,15 @@ class AdminController extends Controller
 
         return back()->with('success', 'Data pemeriksaan berhasil disimpan!');
     }
-    
+
     public function destroyPet($id)
     {
         Pet::findOrFail($id)->delete();
         return back()->with('success', 'Data dihapus.');
     }
     public function petIndex()
-{
-    $pets = Pet::with('owner')->latest()->get();
-    return view('admin.pets.index', compact('pets'));
-}
+    {
+        $pets = Pet::with('owner')->latest()->get();
+        return view('admin.pets.index', compact('pets'));
+    }
 }
