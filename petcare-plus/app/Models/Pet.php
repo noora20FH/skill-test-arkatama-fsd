@@ -6,19 +6,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pet extends Model
 {
-    // Tambahkan ini untuk memperbaiki error MassAssignmentException
-    protected $fillable = [
-        'owner_id',
-        'code',
-        'name',
-        'type',
-        'age',
-        'weight',
-    ];
+    protected $fillable = ['owner_id', 'code', 'name', 'type', 'age', 'weight'];
 
-    // Relasi ke Owner (Opsional tapi penting untuk project ini)
-    public function owner(): BelongsTo
-    {
+    public function owner() {
         return $this->belongsTo(Owner::class);
+    }
+
+    // Relasi: 1 Hewan punya banyak Pemeriksaan
+    public function checkups() {
+        return $this->hasMany(Checkup::class);
     }
 }

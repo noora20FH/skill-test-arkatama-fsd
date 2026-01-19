@@ -1,17 +1,20 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.bootstrap')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0 text-center py-5">
+            <div class="card-body">
+                <h1 class="display-4 text-primary mb-3">Selamat Datang di PetCare+</h1>
+                <p class="lead text-muted">Aplikasi Manajemen Kesehatan Hewan Peliharaan Anda.</p>
+                <hr class="my-4">
+                <p>Silakan hubungi Admin klinik untuk mendaftarkan hewan peliharaan Anda atau melakukan pemeriksaan.</p>
+                
+                <div class="alert alert-info mt-4 d-inline-block">
+                    <strong>Status Akun:</strong> Member (User)
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
