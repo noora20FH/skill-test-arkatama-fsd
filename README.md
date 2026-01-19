@@ -18,7 +18,7 @@ Pastikan mesin Anda telah terinstall:
 ### 2. Langkah-langkah Install
 1.  **Clone Repositori**
     ```bash
-    git clone [https://github.com/username/petcare-plus.git](https://github.com/username/petcare-plus.git)
+    git clone [[https://github.com/username/petcare-plus.git](https://github.com/username/petcare-plus.git)](https://github.com/noora20FH/skill-test-arkatama-fsd.git)
     cd petcare-plus
     ```
 
@@ -139,3 +139,4 @@ $$HHMM + XXXX + YYYY$$
 ---
 
 **© 2026 PetCare+ Clinic Management.** *Dibuat untuk kebutuhan Skill Test - Full Stack Developer.*
+
